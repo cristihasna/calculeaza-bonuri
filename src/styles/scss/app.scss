@@ -1,0 +1,13 @@
+section.content-section .container{
+	display: flex;
+	flex-direction: row;
+	.products-container{
+		flex-grow: 1;
+		max-width: 320px;
+	}
+	.buyers-container{
+		flex-grow: 3;
+		max-width: calc(100% - 220px);
+	}
+	
+}

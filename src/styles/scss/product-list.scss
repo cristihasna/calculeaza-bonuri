@@ -1,0 +1,93 @@
+@import 'variables';
+
+.products{
+	min-width: 220px;
+}
+.products-header{
+	height: 50px;
+	line-height: 50px;
+	color: $darkgrey;
+	margin-bottom: 2px;
+	.title{
+		font:{
+			family: $fonts;
+			size: 18px;
+			weight: bold;
+		}
+		background: $lightgrey;
+		display: inline-block;
+		padding: 0 32px;
+	}
+	.upload-button-container{
+		display: inline-block;
+		margin-left: 2px;
+		background: $lightgrey;
+		button{
+			cursor: pointer;
+			border: none;
+			outline: none;
+			background: transparent;
+			text-align: center;
+			width: 50px;
+			height: 50px;
+			transition: All $trs-time;
+			&:hover, &:focus{
+				color: $white;
+				background: $lightblue;
+			}
+		}
+	}
+}
+.product-list-container{
+	background: $lightgrey;
+}
+.products-footer{
+	height: 40px;
+	background: $lightgrey;
+	line-height: 40px;
+	padding: 0 20px 0 25px;
+	display: flex;
+	flex-direction: row;
+	color: $darkgrey;
+	font-family: $fonts;
+	.label{
+		flex-grow: 1;
+	}
+	.value{
+		margin-right: 12px;
+		font-weight: bold;
+	}
+	.currency{
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
+button.add-product-button{
+	font-family: $fonts;
+	font-size: $button-fs;
+	margin-top: 12px;
+	height: 30px;
+	line-height: 30px;
+	background: $lightblue;
+	padding: 0 12px;
+	outline: none;
+	border: 1px solid $lightblue;
+	border-radius: 5px;
+	color: $white;
+	transition: background-color, color $trs-time;
+	cursor: pointer;
+
+	.add-product-icon{
+		margin-right: 5px;
+		float: left;
+		font-size: 17px;
+		margin-top: 1px;
+	}
+	&:hover{
+		background: $white;
+		color: $lightblue;
+	}
+	&:focus{
+		outline: none;
+	}
+}

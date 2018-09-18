@@ -1,0 +1,35 @@
+@import 'variables';
+
+header{
+	height: 80px;
+	margin-bottom: 100px;
+	background: $lightgrey;
+
+	.logo{
+		float: left;
+		height: 80px;
+		line-height: 80px;
+		font-size: 22px;
+		font-family: $fonts;
+		font-weight: bold;
+		color: $darkgrey;
+		.accent{
+			color: $lightblue;
+		}
+	}
+
+	.buttons-container{
+		float: right;
+		height: 80px;
+		line-height: 80px;
+
+		.button-green{
+			background-color: $lightgreen;
+			border-color: $lightgreen;
+
+			&:hover{
+				color: $lightgreen;
+			}
+		}
+	}
+}

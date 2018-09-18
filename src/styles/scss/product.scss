@@ -1,0 +1,51 @@
+@import 'variables';
+
+.product{
+	position: relative;
+	height: 40px;
+	line-height:40px;
+	border-bottom: 1px solid $white;
+	display: flex;
+	flex-direction: row;
+	padding: 0 20px;
+	font-size: 16px;
+	
+	
+	.product-name{
+		flex-grow: 2;
+		text-align: left;
+	}
+
+	.product-price{
+		margin-right: 5px;
+	}
+
+	span.product-currency{
+		font-family: $fonts;
+		color: $mediumgrey;
+		text-transform: uppercase;
+	}
+
+	.product-remove-button{
+		position: absolute;
+		padding: 0;
+		right: 16px;
+		height: 24px;
+		width: 24px;
+		line-height: 22px;
+		text-align: center;
+		border: 1px solid $mediumgrey;
+		background: $white;
+		font-size: 12px;
+		color: $mediumgrey;
+		border-radius: 5px;
+		top: 7px;
+		cursor: pointer;
+		transition: opacity $trs-time;
+		opacity: 0;
+	}
+
+	&:hover .product-remove-button{
+		opacity: 1;
+	}
+}

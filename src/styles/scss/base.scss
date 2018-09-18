@@ -1,0 +1,128 @@
+@import 'variables';
+
+.clearfix{
+	clear: both;
+}
+
+*{
+	box-sizing: border-box;
+}
+.container{
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+}
+
+button{
+	background: transparent;
+	border: none;
+	outline: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+
+button.add-button{
+	font-family: $fonts;
+	font-size: $button-fs;
+	margin-top: 12px;
+	height: 30px;
+	line-height: 30px;
+	background: $lightblue;
+	padding: 0 12px;
+	outline: none;
+	border: 1px solid $lightblue;
+	border-radius: 5px;
+	color: $white;
+	transition: All $trs-time;
+	cursor: pointer;
+
+	.button-icon{
+		margin-right: 5px;
+		float: left;
+		margin-top: 1px;
+		font-size: $button-fs + 0.2rem;
+	}
+
+	&:hover{
+		background: $white;
+		color: $lightblue;
+	}
+
+	&:focus{
+		outline: none;
+	}
+}
+
+button.large-button{
+	border:{
+		style: solid;
+		width: 0.1rem;
+		color: $lightblue;
+		radius: 5px;
+	}
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	padding: 0 15px;
+	font-size: 16px;
+	color: $white;
+	cursor: pointer;
+	outline: none;
+	transition: All $trs-time;
+	background: $lightblue;
+	
+	&:hover{
+		background: $white;
+		color: $lightblue;
+	}
+
+	span.fa{
+		margin-right: 5px;
+		font-size: 19px;
+	}
+}
+
+input.scalable{
+	border: 1px solid transparent;
+	box-sizing: content-box;
+	padding: 0 5px;
+	background:transparent;
+	outline: none;
+	height: 26px;
+	margin-top: 6px;
+	float: left;
+	color: $mediumgrey;
+	font-family: $fonts;
+	transition: border-color, background $trs-time;
+
+	&:hover, &:focus{
+		border-color: $mediumgrey;
+		background: $white;
+	}
+	&.error{
+		border-color: $lightred;
+		background: $white;
+		color: $lightred;
+	}
+}
+
+#product-input-mirror{
+	display: inline;
+	font-size: 16px;
+	border: 1px solid transparent;
+	font-family: $fonts;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	opacity: 0;
+}
+
+@media (max-width: 1024px) {
+	.container{
+		width: 100%;
+		padding: 0 10px;
+	}
+}

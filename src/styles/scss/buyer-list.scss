@@ -1,0 +1,15 @@
+@import 'variables';
+
+.buyers{
+	.buyer-list-container{
+		display: flex;
+		flex-direction: row;
+		overflow-x: auto;
+		overflow-y: hidden;
+
+	}
+	button.add-button{
+		float: right;
+	}	
+}
+
