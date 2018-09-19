@@ -95,7 +95,7 @@ input.scalable{
 	float: left;
 	color: $mediumgrey;
 	font-family: $fonts;
-	transition: background-color $trs-time, $border-color $trs-time;
+	transition: background-color $trs-time, border-color $trs-time;
 
 	&:hover, &:focus{
 		border-color: $mediumgrey;
