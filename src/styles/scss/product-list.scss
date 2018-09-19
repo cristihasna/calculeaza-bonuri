@@ -1,35 +1,36 @@
 @import 'variables';
 
 .products{
-	min-width: 220px;
+	min-width: $products-min-width;
 }
 .products-header{
-	height: 50px;
-	line-height: 50px;
+	height: $head-row-height;
+	line-height: $head-row-height;
 	color: $darkgrey;
 	margin-bottom: 2px;
 	.title{
-		font:{
-			family: $fonts;
-			size: 18px;
-			weight: bold;
-		}
+		font-family: $fonts;
+		font-size: $title-fs;
+		font-weight: bold;
 		background: $lightgrey;
-		display: inline-block;
-		padding: 0 32px;
+		float: left;
+		padding: $cell-padding;
 	}
 	.upload-button-container{
-		display: inline-block;
+		display: block;
+		float: left;
 		margin-left: 2px;
 		background: $lightgrey;
+		height: $head-row-height;
 		button{
 			cursor: pointer;
+			box-sizing: border-box;
 			border: none;
 			outline: none;
 			background: transparent;
 			text-align: center;
-			width: 50px;
-			height: 50px;
+			width: $head-row-height;
+			height: $head-row-height;
 			transition: All $trs-time;
 			&:hover, &:focus{
 				color: $white;
@@ -42,10 +43,11 @@
 	background: $lightgrey;
 }
 .products-footer{
-	height: 40px;
+	height: $row-height;
 	background: $lightgrey;
-	line-height: 40px;
-	padding: 0 20px 0 25px;
+	line-height: $row-height;
+	padding: $cell-padding;
+	font-size: $content-fs;
 	display: flex;
 	flex-direction: row;
 	color: $darkgrey;
@@ -80,7 +82,6 @@ button.add-product-button{
 	.add-product-icon{
 		margin-right: 5px;
 		float: left;
-		font-size: 17px;
 		margin-top: 1px;
 	}
 	&:hover{

@@ -1,3 +1,4 @@
+/* colors */
 $white: #fff;
 $lightgrey: #f0f0f0;
 $mediumgrey: #948a99;
@@ -5,7 +6,23 @@ $darkgrey: #262626;
 $lightblue: #22a3a4;
 $lightgreen: #7cc576;
 $lightred: #e74c3c;
-$fonts: Calibri, sans-serif;
+
+/* fonts */
+$fonts: 'Calibri', sans-serif;
+$title-fs: 1.1rem;
+$content-fs: 1rem;
 $button-fs: 0.9rem;
 $header-button-fs: 1.1rem;
+
+/* transition time */
 $trs-time: .1s;
+
+/* dimensions */
+$header-height: 80px;
+$header-mb: 100px;
+$row-height: 40px;
+$head-row-height: 50px;
+$products-min-width: 220px;
+$products-max-with: 320px;
+$buyer-min-width: 160px;
+$cell-padding: 0 25px;

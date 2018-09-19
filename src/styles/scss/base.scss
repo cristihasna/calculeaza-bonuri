@@ -57,12 +57,10 @@ button.add-button{
 }
 
 button.large-button{
-	border:{
-		style: solid;
-		width: 0.1rem;
-		color: $lightblue;
-		radius: 5px;
-	}
+	border-style: solid;
+	border-width: 1px;
+	border-color: $lightblue;
+	border-radius: 5px;
 	height: 40px;
 	line-height: 40px;
 	margin-left: 10px;
@@ -93,10 +91,11 @@ input.scalable{
 	outline: none;
 	height: 26px;
 	margin-top: 6px;
+	margin-left: -5px;
 	float: left;
 	color: $mediumgrey;
 	font-family: $fonts;
-	transition: border-color, background $trs-time;
+	transition: background-color $trs-time, $border-color $trs-time;
 
 	&:hover, &:focus{
 		border-color: $mediumgrey;
