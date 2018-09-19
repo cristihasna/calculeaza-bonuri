@@ -9,6 +9,7 @@ export class Buyer extends React.Component{
 		super(props);
 
 		this.handleNameChange = this.handleNameChange.bind(this);
+		this.handleOwnerChange = this.handleOwnerChange.bind(this);
 		this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
 		this.handleRemove = this.handleRemove.bind(this);
 	}
@@ -36,9 +37,15 @@ export class Buyer extends React.Component{
 		this.props.onChange(newBuyer, this.props.index);
 	}
 
+	handleOwnerChange(){
+		this.props.onOwnerChange(this.props.index);
+	}
+
 	handleRemove(e){
 		this.props.onRemove(this.props.index);
 	}
+
+
 
 	render(){
 		const checkButtonIcon = <FontAwesome style={{marginLeft: 2}} name="check-square-o" />;
@@ -46,23 +53,32 @@ export class Buyer extends React.Component{
 		const nameInputWidth = calculateInputWidth(this.props.data.name);
 
 		let buyerChecks = this.props.data.products.map((product, i) =>
-				<div key={"check_" + i} className="buyer-product-check">
-					<button 
-						onClick={this.handleCheckboxChange(i)}
-						className="buyer-toggle-button">
-						{product ? checkButtonIcon : uncheckButtonIcon}
-					</button>
-				</div>
-			);
+			<div key={"check_" + i} className="buyer-product-check">
+				<button 
+					onClick={this.handleCheckboxChange(i)}
+					className="buyer-toggle-button">
+					{product ? checkButtonIcon : uncheckButtonIcon}
+				</button>
+			</div>
+		);
 
 		let removeButton = (
-				<button
-					onClick={this.handleRemove}
-					className="buyer-remove-button"
-					>
-					<FontAwesome name="user-times" />
-				</button>
-			);
+			<button
+				onClick={this.handleRemove}
+				className="buyer-remove-button"
+				>
+				<FontAwesome name="user-times" />
+			</button>
+		);
+
+		let paidButton = (
+			<button
+				onClick={this.handleOwnerChange}
+				className="buyer-paid-button"
+				>
+				<FontAwesome name="credit-card-alt" />Achitat 
+			</button>
+		);
 
 		return (
 			<div className='buyer'>
@@ -91,6 +107,7 @@ export class Buyer extends React.Component{
 						<span className="label">Total</span>
 						<span className="value">{this.props.total}</span>
 						<span className="currency">LEI</span>
+						{paidButton}
 					</div>)
 				}
 			</div>
@@ -99,10 +116,11 @@ export class Buyer extends React.Component{
 }
 
 Buyer.propTypes = {
-	data: PropTypes.object.isRequired,
-	total: PropTypes.string.isRequired,
-	index: PropTypes.number.isRequired,
+	data: PropTypes.object.isRequired, //buyer data
+	total: PropTypes.string.isRequired, //total price
+	index: PropTypes.number.isRequired, //buyer index
 	removeable: PropTypes.bool.isRequired,
 	onChange: PropTypes.func.isRequired,
+	onOwnerChange: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired
 };

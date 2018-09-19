@@ -84,8 +84,26 @@
 			text-transform: uppercase;
 		}
 		.buyer-paid-button{
+			opacity: 0;
 			position: absolute;
-			right: 0;
+			background: $white;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			line-height: $row-height;
+			font-size: $button-fs;
+			color: $lightgreen;
+			border: 1px solid $lightgreen;
+			outline: none;
+			transition: opacity $trs-time;
+
+			span{
+				margin-right: 5px;
+			}
+		}
+		&:hover .buyer-paid-button{
+			opacity: 1;
 		}
 	}
 	&:last-child{

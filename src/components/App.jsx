@@ -31,6 +31,7 @@ class App extends React.Component {
 
       this.updateProduct = this.updateProduct.bind(this);
       this.updateBuyer = this.updateBuyer.bind(this);
+      this.setOwner = this.setOwner.bind(this);
       this.addProduct = this.addProduct.bind(this);
       this.addBuyer = this.addBuyer.bind(this);
       this.removeProduct = this.removeProduct.bind(this);
@@ -41,15 +42,23 @@ class App extends React.Component {
    updateProduct(product, index){
       let products = this.state.products;
       products[index] = product;
-      this.setState({products: products});
+      this.setState({products});
    }
 
    updateBuyer(buyer, index){
       let buyers = this.state.buyers;
       buyers[index] = buyer;
-      this.setState({buyers: buyers});
+      this.setState({buyers});
    }
 
+   setOwner(index){
+      let buyers = this.state.buyers;
+      for(let buyer of buyers){
+            buyer.owner = false;
+      }
+      buyers[index].owner = true;
+      this.setState({buyers})
+   }
    removeProduct(index){
       let products = this.state.products;
       products = products.slice(0, index).concat(products.slice(index + 1));
@@ -60,13 +69,13 @@ class App extends React.Component {
          buyer.products = updatedProducts;
          return buyer;
       })
-      this.setState({products: products, buyers: buyers});
+      this.setState({products, buyers});
    }
 
    removeBuyer(index){
       let buyers = this.state.buyers;
       buyers = buyers.slice(0, index).concat(buyers.slice(index + 1));
-      this.setState({buyers: buyers});
+      this.setState({buyers});
    }
 
    addProduct(){
@@ -131,6 +140,7 @@ class App extends React.Component {
                      <BuyerList
                         buyers={this.state.buyers}
                         onChange={this.updateBuyer}
+                        onOwnerChange={this.setOwner}
                         onAdd={this.addBuyer}
                         onRemove={this.removeBuyer}
                         computeTotal={this.computeBuyerTotal}

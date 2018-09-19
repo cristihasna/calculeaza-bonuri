@@ -15,6 +15,7 @@ export class BuyerList extends React.Component{
 					total={this.props.computeTotal(i)}
 					removeable={this.props.buyers.length > 2}
 					onChange={this.props.onChange}
+					onOwnerChange={this.props.onOwnerChange}
 					onRemove={this.props.onRemove}
 					/> 
 			);
@@ -40,6 +41,7 @@ export class BuyerList extends React.Component{
 BuyerList.propTypes = {
 	buyers: PropTypes.array.isRequired,
 	onChange: PropTypes.func.isRequired,
+	onOwnerChange: PropTypes.func.isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
 	computeTotal: PropTypes.func.isRequired
