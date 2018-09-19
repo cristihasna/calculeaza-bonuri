@@ -24,6 +24,11 @@ $row-height: 40px;
 $head-row-height: 50px;
 $products-min-width: 220px;
 $products-max-width: 320px;
-$buyer-min-width: 160px;
+$buyer-min-width: 140px;
 $cell-padding: 0 25px;
+
+/* mobile dimensions */
+$mobile-breakpoint: 425px;
+$mobile-size-k: .65; //coefficient of downsize on mobile devices
+$mobile-fs-diff: .2rem; //font size difference on mobile devices
 

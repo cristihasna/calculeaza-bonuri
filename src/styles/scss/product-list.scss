@@ -64,31 +64,35 @@
 		text-transform: uppercase;
 	}
 }
-button.add-product-button{
-	font-family: $fonts;
-	font-size: $button-fs;
-	margin-top: 12px;
-	height: 30px;
-	line-height: 30px;
-	background: $lightblue;
-	padding: 0 12px;
-	outline: none;
-	border: 1px solid $lightblue;
-	border-radius: 5px;
-	color: $white;
-	transition: background-color, color $trs-time;
-	cursor: pointer;
 
-	.add-product-icon{
-		margin-right: 5px;
-		float: left;
-		margin-top: 1px;
+
+@media (max-width: $mobile-breakpoint){
+	$cell-padding: 0 10px;
+	.products{
+		min-width: $products-min-width * $mobile-size-k;
 	}
-	&:hover{
-		background: $white;
-		color: $lightblue;
+	.products-header{
+		height: $head-row-height * $mobile-size-k;
+		line-height: $head-row-height * $mobile-size-k;
+		.title{
+			font-size: $title-fs - $mobile-fs-diff;
+			padding: $cell-padding;
+		}
+		.upload-button-container{
+			height: $head-row-height * $mobile-size-k;
+			button{
+				width: $head-row-height * $mobile-size-k;
+				height: $head-row-height * $mobile-size-k;
+			}
+		}
 	}
-	&:focus{
-		outline: none;
+	.products-footer{
+		height: $row-height * $mobile-size-k;
+		line-height: $row-height * $mobile-size-k;
+		padding: $cell-padding;
+		font-size: $content-fs - $mobile-fs-diff;
+		.value{
+			margin-right: 9px;
+		}
 	}
 }

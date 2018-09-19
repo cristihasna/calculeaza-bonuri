@@ -20,8 +20,8 @@ header{
 
 	.buttons-container{
 		float: right;
-		height: 80px;
-		line-height: 80px;
+		height: $header-height;
+		line-height: $header-height;
 
 		.button-green{
 			background-color: $lightgreen;
@@ -31,6 +31,24 @@ header{
 				color: $lightgreen;
 				background: $white;
 			}
+		}
+	}
+}
+
+@media (max-width: $mobile-breakpoint){
+	header{
+		height: $header-height * $mobile-size-k;
+		margin-bottom: $header-mb * $mobile-size-k;
+	
+		.logo{
+			height: $header-height * $mobile-size-k;
+			line-height: $header-height * $mobile-size-k;
+			font-size: 1rem;
+		}
+	
+		.buttons-container{
+			height: $header-height * $mobile-size-k;
+			line-height: $header-height * $mobile-size-k;
 		}
 	}
 }

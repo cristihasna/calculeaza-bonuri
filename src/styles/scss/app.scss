@@ -9,7 +9,17 @@ section.content-section .container{
 	}
 	.buyers-container{
 		flex-grow: 3;
-		max-width: calc(100% - $products-min-width);
+		max-width: calc(100% - #{$products-min-width});
 	}
 	
+}
+
+@media (max-width: $mobile-breakpoint){
+
+	section.content-section .container .products-container{
+		max-width: $products-max-width * $mobile-size-k;
+	}
+	section.content-section .container .buyers-container{
+		max-width: calc(100%  - #{$products-min-width * $mobile-size-k});
+	}
 }

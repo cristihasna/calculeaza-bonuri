@@ -110,7 +110,7 @@ input.scalable{
 
 #product-input-mirror{
 	display: inline;
-	font-size: 16px;
+	font-size: $content-fs;
 	border: 1px solid transparent;
 	font-family: $fonts;
 	position: absolute;
@@ -123,5 +123,47 @@ input.scalable{
 	.container{
 		width: 100%;
 		padding: 0 10px;
+	}
+}
+
+@media (max-width: $mobile-breakpoint){
+	button.add-button{
+		font-size: $button-fs - $mobile-fs-diff;
+		height: 24px;
+		line-height: 24px;
+		padding: 0 6px;
+		border: 1px solid $lightblue;
+		border-radius: 3px;
+		
+		.button-icon{
+			font-size: $button-fs - $mobile-fs-diff + 0.2rem;
+		}
+	}
+	
+	button.large-button{
+		border-radius: 3px;
+		height: 30px;
+		line-height: 30px;
+		margin-left: 5px;
+		padding: 0 10px;
+		font-size: $button-fs - $mobile-fs-diff + .1rem;
+
+		span.fa{
+			margin-right: 5px;
+			font-size: $button-fs - $mobile-fs-diff + .2rem;
+		}
+	}
+	
+	input.scalable{
+		padding: 0 3px;
+		height: 20px;
+		line-height: 20px;
+		margin-top: 6px;
+		font-size: $content-fs - $mobile-fs-diff;
+		margin-left: -3px;
+	}
+	
+	#product-input-mirror{
+		font-size: $content-fs - $mobile-fs-diff;
 	}
 }
