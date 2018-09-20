@@ -1,6 +1,8 @@
 @import 'variables';
 
 .buyers{
+	position: relative;
+
 	.buyer-list-container{
 		display: flex;
 		flex-direction: row;
@@ -13,3 +15,31 @@
 	}	
 }
 
+@media (max-width: $mobile-breakpoint){
+	.buyers{
+		&::before, &::after{
+			content: " ";
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			height: 100%;
+			width: 0px;
+			transition: width $trs-time;
+		}
+		&::before{
+			left: 0;
+			background-image: linear-gradient(to right, rgba(0, 0, 0, .1), transparent);
+		}
+		&::after{
+			right: 0;
+			background-image: linear-gradient(to left, rgba(0, 0, 0, .1), transparent);
+		}
+		&.scrollable-left::before{
+			width: 10px;
+		}
+		&.scrollable-right::after{
+			width: 10px;
+		}
+	}
+	
+}

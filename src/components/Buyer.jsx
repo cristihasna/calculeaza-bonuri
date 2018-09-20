@@ -76,7 +76,7 @@ export class Buyer extends React.Component{
 				onClick={this.handleOwnerChange}
 				className="buyer-paid-button"
 				>
-				<FontAwesome name="credit-card-alt" />Achitat 
+				<FontAwesome name="credit-card-alt" /> <span className="paid-label">Achitat</span> 
 			</button>
 		);
 
@@ -100,7 +100,9 @@ export class Buyer extends React.Component{
 				{	
 					this.props.data.owner === true ?
 					(<div className="buyer-footer">
-						<span className="label-paid">Achitat</span>
+						<span className="label-paid">
+							<FontAwesome name="credit-card" />
+						</span>
 					</div>)
 						:
 					(<div className="buyer-footer">

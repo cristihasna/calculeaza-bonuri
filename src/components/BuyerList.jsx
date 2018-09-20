@@ -6,6 +6,32 @@ import '../styles/css/buyer-list.css';
 
 export class BuyerList extends React.Component{
 
+	constructor(props){
+		super(props);
+		this.buyerListContainer = React.createRef();
+	}
+	componentDidMount(){
+		let element = this.buyerListContainer.current;
+		element.addEventListener('scroll', this.handleScroll);
+	}
+	
+	handleScroll(e){
+		let scrollLeft = e.target.scrollLeft;
+		let maxScrollLeft = e.target.scrollWidth - e.target.parentElement.scrollWidth;
+		if(scrollLeft > 0){
+			e.target.parentNode.classList.add('scrollable-left');
+		} else {
+			e.target.parentNode.classList.remove('scrollable-left');
+		}
+
+		if(scrollLeft < maxScrollLeft){
+			e.target.parentNode.classList.add('scrollable-right');
+		} else {
+			e.target.parentNode.classList.remove('scrollable-right');
+		}
+
+	}
+	
 	render(){
 		let buyersList = this.props.buyers.map((buyer, i) =>
 				<Buyer 
@@ -22,7 +48,7 @@ export class BuyerList extends React.Component{
 
 		return (
 			<div className="buyers">
-				<div className="buyer-list-container">
+				<div className="buyer-list-container" ref={this.buyerListContainer}>
 					{buyersList}
 				</div>
 				<button

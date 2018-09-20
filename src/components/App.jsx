@@ -17,12 +17,12 @@ class App extends React.Component {
          ],
          buyers: [
             {
-               name: 'Cumpărător 1',
+               name: 'Eu',
                products: [1],
                owner: true
             },
             {
-               name: 'Cumpărător 2',
+               name: 'Tu',
                products: [1],
                owner: false
             }
@@ -95,7 +95,7 @@ class App extends React.Component {
    addBuyer(){
       let updatedBuyers = this.state.buyers;
       const buyerProducts = this.state.products.map((product) => 1);
-      let buyerName = 'Cumpărător ' + (this.state.buyers.length + 1);
+      let buyerName = 'El';
       let newBuyer = {
          name: buyerName,
          products: buyerProducts,

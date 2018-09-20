@@ -7,7 +7,7 @@ function calculateInputWidth(text){
 	}
 	mirrorInput.innerText = text.toString().replace(' ', '_');
 	const width = mirrorInput.getBoundingClientRect().width;
-	return width > 20 ? width : 20;
+	return width > 10 ? width : 10;
 }
 
-module.exports = calculateInputWidth;
+export default calculateInputWidth;

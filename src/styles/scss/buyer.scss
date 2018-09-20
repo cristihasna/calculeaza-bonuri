@@ -72,11 +72,11 @@
 		}
 		.label-paid{
 			flex-grow: 1;
-			color: $mediumgrey;
+			color: $lightgreen;
 			text-align: center;
 		}
 		.value{
-			margin-right: 12px;
+			margin-right: 5px;
 			font-weight: bold;
 		}
 		.currency{
@@ -117,15 +117,22 @@
 		min-width: $buyer-min-width * $mobile-size-k;
 		.buyer-header{
 			height: $head-row-height * $mobile-size-k + 2px;
-			input{
-				margin-top: 11px * $mobile-size-k;
-			}
-			button.buyer-remove-button{
-				height: 20px;
-				width: 20px;
-				font-size: 10px;
-				top: -1px;
-				margin-right: -20px;
+			.buyer-name{			
+				position: relative;
+				input{
+					margin-top: 11px * $mobile-size-k;
+				}
+				button.buyer-remove-button{
+					border-color: $lightgrey;
+					opacity: 1;
+					height: 20px;
+					width: 20px;
+					font-size: 10px;
+					top: calc(50% - 8px);
+					margin-right: 0;
+					position: absolute;
+					right: -1px;
+				}
 			}
 		}
 		.buyer-checks-container{
@@ -149,14 +156,37 @@
 
 			.value{
 				flex-grow: 1;
-				margin-right: 10px;
+				text-align: center;
+				margin-right: 0;
 			}
 			.currency{
-				flex-grow: 1;
+				display: none;
 			}
 		
 			.buyer-paid-button{
 				font-size: $button-fs - $mobile-fs-diff;
+				opacity: 1;
+				border-color: $lightgrey;
+				color: $mediumgrey;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				right: -1px;
+				left: auto;
+				top: calc(50% - 10px);
+
+				span.fa{
+					margin-right: 0;
+				}
+
+				span.paid-label{
+					display: none;
+				}
+			}
+		}
+		&:last-child{
+			.buyer-paid-button{
+				right: 0;
 			}
 		}
 	}
