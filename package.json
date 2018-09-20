@@ -14,8 +14,8 @@
     "react-scripts": "1.1.5"
   },
   "scripts": {
-    "build-sass": "node-sass-chokidar src\\styles\\scss -o src\\styles\\css --indent-type=tab --indent-width=1 --skip-initial --output-style=expanded",
-    "watch-sass": "npm run build-sass && node-sass-chokidar src\\styles\\scss -o src\\styles\\css --watch --indent-type=tab --indent-width=1 --skip-initial --output-style=expanded",
+    "build-sass": "node-sass-chokidar src/styles/scss -o src/styles/css --indent-type=tab --indent-width=1 --skip-initial --output-style=expanded",
+    "watch-sass": "npm run build-sass && node-sass-chokidar src/styles/scss -o src/styles/css --watch --indent-type=tab --indent-width=1 --skip-initial --output-style=expanded",
     "start": "concurrently \"react-scripts start \" \"npm run watch-sass\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
