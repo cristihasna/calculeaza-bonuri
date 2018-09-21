@@ -58,6 +58,10 @@
 		line-height: $row-height * $mobile-size-k;
 		padding: $cell-padding;
 		font-size: $content-fs - $mobile-fs-diff;
+
+		.product-name input.scalable{
+			margin-top: ($row-height * $mobile-size-k - 22px) / 2;
+		}
 		.product-price{
 			margin-right: 3px;
 			

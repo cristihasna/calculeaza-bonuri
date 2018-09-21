@@ -15,6 +15,15 @@ export class BuyerList extends React.Component{
 		element.addEventListener('scroll', this.handleScroll);
 	}
 	
+	componentDidUpdate(){
+		let element = this.buyerListContainer.current;
+		if(element.scrollWidth - element.parentElement.scrollWidth) {
+			element.parentNode.classList.add('scrollable-right');
+		} else {
+			element.parentNode.classList.remove('scrollable-right');
+		}
+	}
+
 	handleScroll(e){
 		let scrollLeft = e.target.scrollLeft;
 		let maxScrollLeft = e.target.scrollWidth - e.target.parentElement.scrollWidth;
