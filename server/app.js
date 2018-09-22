@@ -7,6 +7,8 @@ app.use(express.json());
 
 app.use('/api/init', initRouter);
 
+app.use(express.static(path.join(__dirname, '../build')));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.status(404).send();
