@@ -1,5 +1,7 @@
 import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Header} from './Header'; 
+import {Login} from './Login';
 import {ProductList} from './ProductList';
 import {BuyerList} from './BuyerList';
 import '../styles/css/app.css';
@@ -10,7 +12,8 @@ class App extends React.Component {
       super(props);
       this.state = {
             products: [],
-            buyers: []
+            buyers: [],
+            authenticated: false
       };
 
       this.updateProduct = this.updateProduct.bind(this);
@@ -30,6 +33,7 @@ class App extends React.Component {
                this.setState(data);
                console.log(data);
          })
+
          .catch(err => console.log(err));
    }
 
@@ -119,31 +123,39 @@ class App extends React.Component {
 
    render() {
       return (
+      <Router>
          <div className="app">
-            <Header />
+            <Header authenticated={this.state.authenticated} />
             <section className="content-section">
-               <div className="container">
-                  <div className="products-container">
-                     <ProductList 
-                        products={this.state.products} 
-                        onChange={this.updateProduct}
-                        onAdd={this.addProduct} 
-                        onRemove={this.removeProduct} />
-                  </div>
-                  <div className="buyers-container">
-                     <BuyerList
-                        buyers={this.state.buyers}
-                        onChange={this.updateBuyer}
-                        onOwnerChange={this.setOwner}
-                        onAdd={this.addBuyer}
-                        onRemove={this.removeBuyer}
-                        computeTotal={this.computeBuyerTotal}
-                        />
-                  </div>  
-               </div>
-            </section>
-            
+                  <Route exact path="/login" render={() =>(
+                        <div className="container">
+                              <Login />
+                        </div>
+                  )} />
+                  <Route exact path="/" render={() => (
+                        <div className="container">
+                              <div className="products-container">
+                                    <ProductList 
+                                    products={this.state.products} 
+                                    onChange={this.updateProduct}
+                                    onAdd={this.addProduct} 
+                                    onRemove={this.removeProduct} />
+                              </div>
+                              <div className="buyers-container">
+                                    <BuyerList
+                                    buyers={this.state.buyers}
+                                    onChange={this.updateBuyer}
+                                    onOwnerChange={this.setOwner}
+                                    onAdd={this.addBuyer}
+                                    onRemove={this.removeBuyer}
+                                    computeTotal={this.computeBuyerTotal}
+                                    />
+                              </div> 
+                        </div>
+                  )} />
+            </section>            
          </div>
+      </Router>
       );
    }
 }

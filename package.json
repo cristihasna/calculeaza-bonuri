@@ -11,6 +11,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-fontawesome": "^1.6.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"
   },
   "scripts": {
@@ -24,5 +26,5 @@
     "postinstall": "npm run build-sass && cd server && npm install",
     "heroku-postbuild": "npm run build"
   },
-  "proxy" : "http://localhost:3001"
+  "proxy": "http://localhost:3001"
 }

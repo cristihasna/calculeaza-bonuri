@@ -13,6 +13,10 @@ header{
 		font-family: $fonts;
 		font-weight: bold;
 		color: $darkgrey;
+		a{
+			text-decoration: none;
+			color: inherit;
+		}
 		.accent{
 			color: $lightblue;
 		}
@@ -22,7 +26,7 @@ header{
 		float: right;
 		height: $header-height;
 		line-height: $header-height;
-
+		
 		.button-green{
 			background-color: $lightgreen;
 			border-color: $lightgreen;

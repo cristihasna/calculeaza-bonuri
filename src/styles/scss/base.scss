@@ -17,14 +17,18 @@
 button{
 	background: transparent;
 	border: none;
+	display: inline-block;
 	outline: none;
-	padding: 0;
 	margin: 0;
 	cursor: pointer;
 }
 
+a.button{
+	display: inline-block;
+	text-decoration: none !important;
+}
 
-button.add-button{
+.add-button{
 	font-family: $fonts;
 	font-size: $button-fs;
 	margin-top: 12px;
@@ -56,7 +60,7 @@ button.add-button{
 	}
 }
 
-button.large-button{
+.large-button, .text-button{
 	border-style: solid;
 	border-width: 1px;
 	border-color: $lightblue;
@@ -80,6 +84,32 @@ button.large-button{
 	span.fa{
 		margin-right: 5px;
 		font-size: 19px;
+	}
+}
+
+.text-button{
+	background: transparent;
+	border-color: transparent;
+	color: $mediumgrey;
+	position: relative;
+	&:hover, &:active{
+		color: $mediumgrey;
+
+		&::after{
+			opacity: 0;
+		}
+	}
+
+	&::after{
+		content: " ";
+		background: $mediumgrey;
+		height: 50%;
+		width: 1px;
+		right: 3px;
+		top: 25%;
+		position: absolute;
+		opacity: 1;
+		transition: opacity $trs-time;
 	}
 }
 
