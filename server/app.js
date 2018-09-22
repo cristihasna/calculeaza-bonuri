@@ -1,13 +1,18 @@
 const express = require('express');
+const path = require('path');
 var initRouter = require('./routes/init');
 
 var app = express();
 
 app.use(express.json());
 
-app.use('/api/init', initRouter);
-
 app.use(express.static(path.join(__dirname, '../build')));
+
+app.get('/.', (req, res) => {
+  res.sendFile(path.join(__dirname+'../build/index.html'));
+});
+
+app.use('/api/init', initRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
