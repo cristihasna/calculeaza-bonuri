@@ -9,24 +9,8 @@ class App extends React.Component {
    constructor(props){
       super(props);
       this.state = {
-         products : [
-            {
-               name: 'produs',
-               price: '0.00'
-            }
-         ],
-         buyers: [
-            {
-               name: 'Eu',
-               products: [1],
-               owner: true
-            },
-            {
-               name: 'Tu',
-               products: [1],
-               owner: false
-            }
-         ]
+            products: [],
+            buyers: []
       };
 
       this.updateProduct = this.updateProduct.bind(this);
@@ -37,6 +21,16 @@ class App extends React.Component {
       this.removeProduct = this.removeProduct.bind(this);
       this.removeBuyer = this.removeBuyer.bind(this);
       this.computeBuyerTotal = this.computeBuyerTotal.bind(this);
+   }
+
+   componentDidMount(){
+         fetch('/api/init')
+         .then(response => response.json())
+         .then(data => {
+               this.setState(data);
+               console.log(data);
+         })
+         .catch(err => console.log(err));
    }
 
    updateProduct(product, index){
@@ -148,6 +142,7 @@ class App extends React.Component {
                   </div>  
                </div>
             </section>
+            
          </div>
       );
    }
