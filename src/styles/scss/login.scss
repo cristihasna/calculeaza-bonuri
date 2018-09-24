@@ -1,1 +1,95 @@
 @import 'variables';
+
+.login-container{
+    display: flex;
+    align-items: center;
+    background: $lightgrey;
+    margin: 0 auto;
+    padding: 2rem 0;
+
+    .column{
+        flex-grow: 1;
+        padding: $cell-padding;
+        border-left: 1px solid $mediumgrey;
+        position: relative;
+
+
+        &:first-child{
+            border-left: none;
+            &::before{
+                display: none;
+            }
+        }
+
+        button.social-button{
+            padding: $cell-padding;
+            display: block;
+            font-size: 1.3rem;
+            width: 100%;
+            background: $lightblue;
+            margin-top: 1rem;
+
+            border: 1px solid $lightblue;
+            border-radius: 5px;
+            color: $white;
+
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+
+        button#fb{
+            background-color: $fb-color;
+            border-color: $fb-color;
+        }
+
+        .field-container{
+            margin-top: 1rem;
+            width: 100%;
+            display: flex;
+            border: 1px solid $mediumgrey;
+            border-radius: 5px;
+            overflow: hidden;
+            
+            label{
+                margin: 0;
+                padding: 0;
+                display: inline;
+                width: $row-height;
+                height: $row-height;
+                line-height: $row-height;
+                text-align: center;
+                background: $white;
+                border: none;
+                border-right: 1px dashed $mediumgrey;
+                color: $mediumgrey;
+            }
+            input{
+                flex-grow: 1;
+                width: 100%;
+                display: inline-block;
+                padding: 0;
+                margin: 0;
+                border: none;
+            }
+
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+
+        &::before{
+            content: "sau";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: calc(50% - 15px);
+            left: -15px;
+            text-align: center;
+            background: $lightgrey;
+            display: block;
+
+        }
+    }
+
+}

@@ -62,7 +62,7 @@ export class BuyerList extends React.Component{
 				</div>
 				<button
 					onClick={this.props.onAdd}
-					className="add-button">
+					className="small-button">
 					<span className="button-icon">
 						<FontAwesome name="plus-square-o" />
 					</span>

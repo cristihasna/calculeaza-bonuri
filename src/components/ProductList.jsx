@@ -50,7 +50,7 @@ export class ProductList extends React.Component{
 					<span className="value">{this.getTotalPrice()}</span>
 					<span className="currency">lei</span>
 				</div>
-				<button className="add-button" onClick={this.props.onAdd}>
+				<button className="small-button" onClick={this.props.onAdd}>
 					<span className="button-icon">
 						<FontAwesome name="plus-square-o" />
 					</span>
