@@ -135,6 +135,9 @@
 				}
 			}
 		}
+		&:last-child .buyer-header .buyer-name button.buyer-remove-button{
+			right: 0;
+		}
 		.buyer-checks-container{
 			.buyer-product-check{
 				height: $row-height * $mobile-size-k;
@@ -166,6 +169,7 @@
 			.buyer-paid-button{
 				font-size: $button-fs - $mobile-fs-diff;
 				opacity: 1;
+				padding: 0;
 				border-color: $lightgrey;
 				color: $mediumgrey;
 				width: 20px;

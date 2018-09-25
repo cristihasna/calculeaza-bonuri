@@ -31,7 +31,7 @@ export class Header extends React.Component {
 							<Link to="/login" className="button text-button">
 								Conectare
 							</Link>
-							<Link to="/login" className="button large-button">
+							<Link to="/register" className="button large-button">
 								<FontAwesome name="sign-in" />
 								Înregistrare
 							</Link>

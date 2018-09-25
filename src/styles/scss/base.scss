@@ -26,10 +26,6 @@ button{
 a.button{
 	display: inline-block;
 	text-decoration: none !important;
-
-	&:active, &:focus{
-		color: initial;
-	}
 }
 
 .small-button{
@@ -80,7 +76,7 @@ a.button{
 	transition: All $trs-time;
 	background: $lightblue;
 	
-	&:hover{
+	&:hover, &:active, &:focus{
 		background: $white;
 		color: $lightblue;
 	}

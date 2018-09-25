@@ -6,7 +6,7 @@ import FontAwesome from 'react-fontawesome';
 import '../styles/css/login.css';
 
 
-export class Login extends Component {
+export class Register extends Component {
     constructor(props){
         super(props);
 
@@ -27,43 +27,49 @@ export class Login extends Component {
             return (
                 <Redirect to="/" />
             );
-
+        else
         return (
             <div className="login-container">
-                <div className="column left-column">
+               <div className="column left-column">
                     <button className="social-button" id="fb">
                         <FontAwesome name="facebook" />
                     </button>
-                </div>
-                <div className="column right-column">
+               </div>
+               <div className="column right-column">
                     <div className="field-container">
-                        <input type="text" id="email" placeholder="Email" />
-                        <label htmlFor="email">
-                            <FontAwesome name="envelope" />
-                        </label>
-                    </div>
-                    <div className="field-container">
-                        <input type="password" id="password" placeholder="Password" />
-                        <label htmlFor="password">
-                            <FontAwesome name="key" />
-                        </label>
-                    </div>
+                       <input type="text" id="name" placeholder="Nume"/>
+                       <label htmlFor="name">
+                           <FontAwesome name="user" />
+                       </label>
+                   </div>
+                   <div className="field-container">
+                       <input type="text" id="email" placeholder="Email"/>
+                       <label htmlFor="email">
+                           <FontAwesome name="envelope" />
+                       </label>
+                   </div>
+                   <div className="field-container">
+                       <input type="password" id="password" placeholder="Parola"/>
+                       <label htmlFor="password">
+                           <FontAwesome name="key" />
+                       </label>
+                   </div>
                     <button 
                         className="large-button"
-                        onClick={this.props.onLogIn}
+                        onClick={this.props.onRegister}
                         >
                         <span className="button-icon">
                             <FontAwesome name="sign-in" />
                         </span>
-                        Conectare
+                        Înregistrare
                     </button>
-                </div>
+               </div>      
             </div>
         )
     }
 }
 
-Login.propTypes = {
+Register.propTypes = {
     authenticated: PropTypes.bool.isRequired,
-    onLogIn: PropTypes.func.isRequired
+    onRegister : PropTypes.func.isRequired
 };
