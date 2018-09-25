@@ -22,7 +22,10 @@
 		margin-left: 2px;
 		background: $lightgrey;
 		height: $head-row-height;
-		button{
+		input{
+			display: none;
+		}
+		label{
 			cursor: pointer;
 			box-sizing: border-box;
 			border: none;
@@ -81,7 +84,7 @@
 		}
 		.upload-button-container{
 			height: $head-row-height * $mobile-size-k;
-			button{
+			label{
 				width: $head-row-height * $mobile-size-k;
 				height: $head-row-height * $mobile-size-k;
 			}

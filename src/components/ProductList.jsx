@@ -12,6 +12,21 @@ export class ProductList extends React.Component{
 		this.getTotalPrice = this.getTotalPrice.bind(this);
 	}
 
+	handleChange(e){
+		let data = new FormData();
+		data.append('recfile', e.target.files[0]);
+		fetch('/api/picture', {
+			method: 'post',
+			body: data
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	}
 	getTotalPrice(){
 		let total = 0;
 		for(let product of this.props.products)
@@ -37,9 +52,19 @@ export class ProductList extends React.Component{
 						Produse
 					</div>
 					<div className="upload-button-container">
-						<button className="upload-button">
-							<FontAwesome name="file-text" />
-						</button>
+						<form action="#" encType="multipart/form-data">
+							<input 
+								className="upload-input"
+								type="file" 
+								accept="image/*" 
+								name="picture" 
+								id="picture" 
+								onInput={this.handleChange}
+								/>
+							<label htmlFor="picture" className="upload-button">
+								<FontAwesome name="file-text" />
+							</label>
+						</form>
 					</div>
 				</div>
 				<div className="product-list-container">

@@ -1,11 +1,14 @@
 const express = require('express');
 const path = require('path');
+var bodyParser = require('body-parser');
+
 var initRouter = require('./routes/init');
+var pictureRouter = require('./routes/picture');
 
 var app = express();
-
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/.', (req, res) => {
@@ -13,6 +16,7 @@ app.get('/.', (req, res) => {
 });
 
 app.use('/api/init', initRouter);
+app.use('/api/picture', pictureRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
