@@ -11,6 +11,15 @@ export class Login extends Component {
         this.emailField = React.createRef();
         this.passField = React.createRef();
     }
+
+    componentWillUnmount(){
+        console.log('unmounting');
+    }
+
+    componentDidMount(){
+        console.log('mounted');
+    }
+
     render() {
         return (
             <div className="login-container">

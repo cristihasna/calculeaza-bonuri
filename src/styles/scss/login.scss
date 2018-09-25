@@ -9,6 +9,7 @@
         flex-grow: 1;
         padding: $cell-padding;
         border-left: 1px solid $mediumgrey;
+        width: 100%;
         position: relative;
 
         &.left-column{
@@ -62,11 +63,12 @@
             margin-top: 1rem;
             width: 100%;
             max-width: 320px;
-            display: flex;
+            display: block;
             border: 1px solid $mediumgrey;
             border-radius: 5px;
             overflow: hidden;
-            
+            clear: both;
+
             label{
                 margin: 0;
                 padding: 0;
@@ -77,15 +79,16 @@
                 text-align: center;
                 background: $white;
                 border: none;
-                order: 1;
+                float: left;
                 border-right: 1px dashed $mediumgrey;
                 color: $mediumgrey;
             }
 
             input{
-                flex-grow: 1;
                 order: 2;
-                width: 100%;
+                width: calc(100% - #{$row-height});
+                height: $row-height;
+                line-height: $row-height;
                 display: inline-block;
                 padding: 0 .3rem;
                 margin: 0;
@@ -127,7 +130,8 @@
             border: none;
             width: 100%;
             border-top: 1px solid $mediumgrey;
-    
+            text-align: center;
+
             &.left-column{
                 text-align: center;
             }
@@ -158,6 +162,8 @@
             .field-container{
                 border-radius: 5px;
                 overflow: hidden;
+                margin-left: auto;
+                margin-right: auto;
 
                 height: $head-row-height * $mobile-size-k;
                 
@@ -166,6 +172,12 @@
                     height: $head-row-height * $mobile-size-k;
                     line-height: $head-row-height * $mobile-size-k;
                     font-size: $content-fs - $mobile-fs-diff;
+                }
+
+                input{
+                    width: calc(100% - #{$head-row-height * $mobile-size-k});
+                    height: $head-row-height * $mobile-size-k;
+                    line-height: $head-row-height * $mobile-size-k;
                 }
             }
 
