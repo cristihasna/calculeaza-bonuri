@@ -14,25 +14,25 @@ export class Login extends Component {
     render() {
         return (
             <div className="login-container">
-               <div className="column">
+               <div className="column left-column">
                     <button className="social-button" id="fb">
                         <FontAwesome name="facebook" />
                     </button>
                </div>
-               <div className="column">
+               <div className="column right-column">
                    <div className="field-container">
+                       <input type="text" id="email" placeholder="Email"/>
                        <label htmlFor="email">
                            <FontAwesome name="envelope" />
                        </label>
-                       <input type="text" id="email"/>
                    </div>
                    <div className="field-container">
+                       <input type="password" id="password" placeholder="Password"/>
                        <label htmlFor="password">
                            <FontAwesome name="key" />
                        </label>
-                       <input type="password" id="password"/>
                    </div>
-                    <button className="small-button">
+                    <button className="large-button">
                         <span className="button-icon">
                             <FontAwesome name="sign-in" />
                         </span>

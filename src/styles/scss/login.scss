@@ -1,11 +1,9 @@
 @import 'variables';
 
 .login-container{
+    width: 100%;
     display: flex;
     align-items: center;
-    background: $lightgrey;
-    margin: 0 auto;
-    padding: 2rem 0;
 
     .column{
         flex-grow: 1;
@@ -13,6 +11,22 @@
         border-left: 1px solid $mediumgrey;
         position: relative;
 
+        &.left-column{
+            text-align: right;
+        }
+        
+        &::before{
+            content: "sau";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: calc(50% - 15px);
+            left: -15px;
+            text-align: center;
+            background: $white;
+            display: block;
+
+        }
 
         &:first-child{
             border-left: none;
@@ -23,9 +37,10 @@
 
         button.social-button{
             padding: $cell-padding;
-            display: block;
+            display: inline-block;
             font-size: 1.3rem;
             width: 100%;
+            max-width: 320px;
             background: $lightblue;
             margin-top: 1rem;
 
@@ -46,6 +61,7 @@
         .field-container{
             margin-top: 1rem;
             width: 100%;
+            max-width: 320px;
             display: flex;
             border: 1px solid $mediumgrey;
             border-radius: 5px;
@@ -54,23 +70,39 @@
             label{
                 margin: 0;
                 padding: 0;
-                display: inline;
+                display: inline-block;
                 width: $row-height;
                 height: $row-height;
                 line-height: $row-height;
                 text-align: center;
                 background: $white;
                 border: none;
+                order: 1;
                 border-right: 1px dashed $mediumgrey;
                 color: $mediumgrey;
             }
+
             input{
                 flex-grow: 1;
+                order: 2;
                 width: 100%;
                 display: inline-block;
-                padding: 0;
+                padding: 0 .3rem;
                 margin: 0;
                 border: none;
+                font-size: $content-fs;
+                font-family: $fonts;
+                color: $darkgrey;
+                outline: none;
+
+                &:hover, &:focus{
+                    color: $lightblue;
+
+                    & + label{
+                        color: $lightblue;
+                        border-color: $lightblue;
+                    }
+                }
             }
 
             &:first-child{
@@ -78,18 +110,70 @@
             }
         }
 
-        &::before{
-            content: "sau";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            top: calc(50% - 15px);
-            left: -15px;
-            text-align: center;
-            background: $lightgrey;
-            display: block;
-
+        .large-button{
+            margin: 1rem 0 0 0;
         }
     }
 
+}
+
+@media (max-width: $mobile-breakpoint){
+    .login-container{
+        flex-direction: column;
+        margin: 0 auto;
+    
+        .column{
+            padding: 1rem 0;
+            border: none;
+            width: 100%;
+            border-top: 1px solid $mediumgrey;
+    
+            &.left-column{
+                text-align: center;
+            }
+            
+            &::before{
+                content: "sau";
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                top: -15px;
+                left: calc(50% - 15px);
+                text-align: center;
+                line-height: 25px;
+                background: $white;
+                display: block;
+    
+            }
+    
+            &:first-child{
+                border: none;
+            }
+    
+            button.social-button{
+                font-size: 1.1rem;    
+                border-radius: 3px;
+            }
+    
+            .field-container{
+                border-radius: 5px;
+                overflow: hidden;
+
+                height: $head-row-height * $mobile-size-k;
+                
+                label{
+                    width: $head-row-height * $mobile-size-k;
+                    height: $head-row-height * $mobile-size-k;
+                    line-height: $head-row-height * $mobile-size-k;
+                    font-size: $content-fs - $mobile-fs-diff;
+                }
+            }
+
+            .large-button{
+                display: block;
+                margin: 1rem auto;
+            }
+        }
+    
+    }
 }
