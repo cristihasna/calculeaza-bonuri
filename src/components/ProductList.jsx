@@ -14,9 +14,10 @@ export class ProductList extends React.Component{
 
 	handleChange(e){
 		let data = new FormData();
-		data.append('recfile', e.target.files[0]);
+		data.append('file', e.target.files[0]);
+		data.append('field', 'value');
 		fetch('/api/picture', {
-			method: 'post',
+			method: 'POST',
 			body: data
 		})
 		.then(response => response.json())
@@ -59,7 +60,7 @@ export class ProductList extends React.Component{
 								accept="image/*" 
 								name="picture" 
 								id="picture" 
-								onInput={this.handleChange}
+								onChange={this.handleChange}
 								/>
 							<label htmlFor="picture" className="upload-button">
 								<FontAwesome name="file-text" />
