@@ -13,6 +13,26 @@ var tesseract = Tesseract.create({
     corePath: path.join(__dirname, '../tesseract/src/index.js')
 });
 
+var extractLinesFromData = (linesObject) => {
+    let lines = [];
+    for(let line of linesObject){
+        lines.push({confidence: line.confidence, text:line.text});
+    }
+    return lines;
+}
+
+var extractProductsFromLines = (lines) => {
+    let products = [];
+    let regex = /([0-9]\ [xX]\ [0-9.]+\ [0-9.]+)/;
+    for(line of lines){
+        if(line.confidence > 50 && regex.test(line.text)){
+            products.push(line);
+        }
+    }
+    return products;
+}
+
+
 /* GET users listing. */
 router.post('/', upload.single('file'), function(req, res, next) {
     console.log(req.file);
@@ -23,7 +43,11 @@ router.post('/', upload.single('file'), function(req, res, next) {
         console.log(msg);
     })
     .then((data) => {
-        res.json({lines: data.lines[0].text})
+        res.json({
+            lines: extractLinesFromData(data.lines),
+            text: data.text,
+            products: extractProductsFromLines(extractLinesFromData(data.lines))
+        })
     })
     .catch(err => res.json({err:err}))
 });

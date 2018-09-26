@@ -11,19 +11,19 @@ export class Alert extends Component {
     }
 
     componentDidMount(){
-        // setInterval(() => {
-        //     let alerts = this.state.alerts;
-        //     alerts = alerts.map((alert) => {
-        //         alert.timeout -= 100;
-        //         if (alert.timeout <= 0)
-        //             return null;
-        //         return alert;
-        //     }).filter((alert) => {
-        //         return alert != null;
-        //     });
+        setInterval(() => {
+            let alerts = this.state.alerts;
+            alerts = alerts.map((alert) => {
+                alert.timeout -= 100;
+                if (alert.timeout <= 0)
+                    return null;
+                return alert;
+            }).filter((alert) => {
+                return alert != null;
+            });
 
-        //     this.setState({alerts});
-        // }, 100)
+            this.setState({alerts});
+        }, 100)
     }
 
     closeAlert(index){

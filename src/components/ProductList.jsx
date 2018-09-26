@@ -27,6 +27,9 @@ export class ProductList extends React.Component{
 		.then(data => {
 			this.props.alerter.alert('done', 'success');
 			console.log(data);
+			for(let product of data.products){
+				this.props.alerter.alert(product.text, 'warning', 5000);
+			}
 		})
 		.catch(err => {
 			this.props.alerter.alert('error', 'error');
