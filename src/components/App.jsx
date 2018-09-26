@@ -5,6 +5,7 @@ import {Login} from './Login';
 import {Register} from './Register';
 import {ProductList} from './ProductList';
 import {BuyerList} from './BuyerList';
+import {Alert} from './Alert';
 import '../styles/css/app.css';
 
 class App extends React.Component {
@@ -27,16 +28,17 @@ class App extends React.Component {
 		this.computeBuyerTotal = this.computeBuyerTotal.bind(this);
 		this.logIn = this.logIn.bind(this);
 		this.logOut = this.logOut.bind(this);
+		this.alerter = undefined;
    }
 
 	componentDidMount(){
+		console.log(this.alerter);
 		fetch('/api/init')
 		.then(response => response.json())
 		.then(data => {
 			this.setState(data);
 			console.log(data);
 		})
-
 		.catch(err => console.log(err));
 	}
 
@@ -68,6 +70,7 @@ class App extends React.Component {
 		buyers[index].owner = true;
 		this.setState({buyers})
    }
+
    removeProduct(index){
 		let products = this.state.products;
 		products = products.slice(0, index).concat(products.slice(index + 1));
@@ -145,18 +148,18 @@ class App extends React.Component {
 				<section className="content-section">
 					<Route exact path="/login" render={()=>(
 						<div className="container">
-							<Login authenticated={this.state.authenticated} onLogIn={this.logIn} />
+							<Login authenticated={this.state.authenticated} onLogIn={this.logIn} alerter={this.alerter} />
 						</div>
 					)} />
 					<Route exact path="/register" render={()=>(
 						<div className="container">
-							<Register authenticated={this.state.authenticated} onRegister={this.logIn} />
+							<Register authenticated={this.state.authenticated} onRegister={this.logIn} alerter={this.alerter} />
 						</div>
 					)} />
 					<Route exact path="/" render={()=> (
 						<div className="container">
 							<div className="products-container">
-								<ProductList products={this.state.products} onChange={this.updateProduct} onAdd={this.addProduct} onRemove={this.removeProduct} />
+								<ProductList products={this.state.products} onChange={this.updateProduct} onAdd={this.addProduct} onRemove={this.removeProduct} alerter={this.alerter} />
 							</div>
 							<div className="buyers-container">
 								<BuyerList buyers={this.state.buyers} onChange={this.updateBuyer} onOwnerChange={this.setOwner} onAdd={this.addBuyer}
@@ -165,6 +168,7 @@ class App extends React.Component {
 						</div>
 					)} />
 				</section>
+				<Alert ref={(ref) => {this.alerter = ref}} />
 			</div>
 		</Router>
       	);

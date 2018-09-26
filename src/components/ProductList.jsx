@@ -10,10 +10,13 @@ export class ProductList extends React.Component{
 		super(props);
 
 		this.getTotalPrice = this.getTotalPrice.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+
 	}
 
 	handleChange(e){
 		let data = new FormData();
+		this.props.alerter.alert('started');
 		data.append('file', e.target.files[0]);
 		data.append('field', 'value');
 		fetch('/api/picture', {
@@ -22,9 +25,11 @@ export class ProductList extends React.Component{
 		})
 		.then(response => response.json())
 		.then(data => {
+			this.props.alerter.alert('done', 'success');
 			console.log(data);
 		})
 		.catch(err => {
+			this.props.alerter.alert('error', 'error');
 			console.log(err);
 		});
 	}

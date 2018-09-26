@@ -1,0 +1,104 @@
+@import 'variables';
+
+.alerts-container{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+
+    .alert{
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        background: $lightblue;
+        color: $white;
+        font-family: $fonts;
+        padding: .8rem 1.2em;
+        margin-bottom: .5rem;
+        display: flex;
+
+        span.alert-message-container{
+            flex-grow: 1;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            font-size: $content-fs;
+        }
+
+        button.alert-remove-button{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            margin-left: 1.2rem;
+            font-size: $button-fs;
+            color: $white;
+            border-radius: 3px;
+
+            transition: All $trs-time;
+
+            &:hover{
+                color: $lightblue;
+                background: $white;
+            }
+        }
+
+        &.info{
+            background: $lightblue;
+            button.alert-remove-button:hover{
+                color: $lightblue;
+            }
+        }
+
+        &.error{
+            background: $lightred;
+            button.alert-remove-button:hover{
+                color: $lightred;
+            }
+        }
+
+        &.warning{
+            background: $orange;
+            button.alert-remove-button:hover{
+                color: $orange;
+            }
+        }
+
+        &.success{
+            background: $lightgreen;
+            button.alert-remove-button:hover{
+                color: $lightgreen;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px){
+    .alerts-container .alert{
+        width: calc(100% - .5rem);
+    }
+}
+
+@media (max-width: $mobile-breakpoint){
+    .alerts-container{
+        .alert{
+            padding: .4rem .8em;
+            margin-bottom: .3rem;
+    
+            span.alert-message-container{
+                height: 20px;
+                line-height: 20px;
+                font-size: $content-fs - $mobile-fs-diff;
+            }
+    
+            button.alert-remove-button{
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                margin-left: .8rem;
+                font-size: $button-fs - $mobile-fs-diff;
+            }
+        }
+    }
+}
