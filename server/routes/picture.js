@@ -16,7 +16,10 @@ var tesseract = Tesseract.create({
 var extractLinesFromData = (linesObject) => {
     let lines = [];
     for(let line of linesObject){
-        lines.push({confidence: line.confidence, text:line.text});
+        let words = []
+        for(let word of line.words)
+            words.push(word.text);
+        lines.push({confidence: line.confidence, text:line.text, words});
     }
     return lines;
 }

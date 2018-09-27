@@ -3,21 +3,69 @@ import PropTypes from 'prop-types';
 import {Product} from './Product';
 import '../styles/css/product-list.css';
 import FontAwesome from 'react-fontawesome';
+import Jimp from 'jimp';
 
 export class ProductList extends React.Component{
 
 	constructor(props){
 		super(props);
-
 		this.getTotalPrice = this.getTotalPrice.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+	}
+
+	getImageBuffer(image){
+		return new Promise((resolve, reject) => {
+			let fileReader = new FileReader();
+			fileReader.readAsArrayBuffer(image);
+			fileReader.onload = () => {
+				if(fileReader.readyState === 2){
+					resolve(fileReader.result);					
+				}
+			}
+			fileReader.onerror = () => {
+				reject(fileReader.error);
+			}
+		})
 
 	}
 
+	postprocessImage(imageBuffer){
+		return new Promise((resolve, reject) => {
+			Jimp.read(imageBuffer)
+			.then(async (image) => {
+				let imgWidth = image.bitmap.width;
+				
+				image.autocrop()
+				.resize(imgWidth > 1024 ? 1024 : imgWidth, Jimp.AUTO)
+				.quality(60)
+				.greyscale()
+				.contrast(1)
+
+				let buffer = await image.getBufferAsync(image._originalMime);
+				resolve(buffer);
+			})
+			.catch(err => reject(err));
+		})
+	}
+
 	handleChange(e){
+		let image = e.target.files[0];
+		//get buffer from file
+		this.getImageBuffer(image)
+		.then(imageBuffer => this.postprocessImage(imageBuffer))
+		.then(processedImageBuffer => {
+			let newImage = new File([processedImageBuffer], image.name, {type: image.type});
+			this.recognizeTextFromImage(newImage);
+		})
+		.catch(error => {
+			this.props.alerter.alert(error, 'error');
+		})
+	}
+
+	recognizeTextFromImage(image){
 		let data = new FormData();
 		this.props.alerter.alert('started');
-		data.append('file', e.target.files[0]);
+		data.append('file', image);
 		data.append('field', 'value');
 		fetch('/api/picture', {
 			method: 'POST',
@@ -36,6 +84,7 @@ export class ProductList extends React.Component{
 			console.log(err);
 		});
 	}
+
 	getTotalPrice(){
 		let total = 0;
 		for(let product of this.props.products)
