@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Product} from './Product';
+import {ImageEditor} from './ImageEditor';
 import '../styles/css/product-list.css';
 import FontAwesome from 'react-fontawesome';
 import Jimp from 'jimp';
@@ -11,6 +12,7 @@ export class ProductList extends React.Component{
 		super(props);
 		this.getTotalPrice = this.getTotalPrice.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.recognizeTextFromImage = this.recognizeTextFromImage.bind(this);
 	}
 
 	getImageBuffer(image){
@@ -50,16 +52,7 @@ export class ProductList extends React.Component{
 
 	handleChange(e){
 		let image = e.target.files[0];
-		//get buffer from file
-		this.getImageBuffer(image)
-		.then(imageBuffer => this.postprocessImage(imageBuffer))
-		.then(processedImageBuffer => {
-			let newImage = new File([processedImageBuffer], image.name, {type: image.type});
-			this.recognizeTextFromImage(newImage);
-		})
-		.catch(error => {
-			this.props.alerter.alert(error, 'error');
-		})
+		this.imageEditor.init(image);
 	}
 
 	recognizeTextFromImage(image){
@@ -76,8 +69,12 @@ export class ProductList extends React.Component{
 			this.props.alerter.alert('done', 'success');
 			console.log(data);
 			for(let product of data.products){
-				this.props.alerter.alert(product.text, 'warning', 5000);
+				this.props.onAdd({
+					name: product.name,
+					price: product.price
+				});
 			}
+			
 		})
 		.catch(err => {
 			this.props.alerter.alert('error', 'error');
@@ -139,6 +136,11 @@ export class ProductList extends React.Component{
 					</span>
 					Adaugă produs
 				</button>
+				<ImageEditor 
+					ref={(ref) => {this.imageEditor = ref}}
+					onSubmit={this.recognizeTextFromImage} 
+					alerter={this.props.alerter}
+					/>
 			</div>
 		)
 	}
@@ -149,5 +151,8 @@ ProductList.propTypes = {
 	products: PropTypes.array.isRequired,
 	onChange: PropTypes.func.isRequired,
 	onAdd: PropTypes.func.isRequired,
-	onRemove: PropTypes.func.isRequired
+	onRemove: PropTypes.func.isRequired,
+	alerter: PropTypes.shape({
+		alert: PropTypes.func.isRequired
+	})
 };

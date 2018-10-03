@@ -80,10 +80,32 @@ a.button{
 		background: $white;
 		color: $lightblue;
 	}
+	&:first-child{
+		margin-left: 0;
+	}
 
 	span.fa{
 		margin-right: 5px;
 		font-size: 19px;
+	}
+}
+
+.button-green{
+	background-color: $lightgreen;
+	border-color: $lightgreen;
+
+	&:hover{
+		color: $lightgreen;
+		background: $white;
+	}
+}
+
+.button-orange{
+	background-color: $orange;
+	border-color: $orange;
+	&:hover{
+		color: $orange;
+		background: $white;
 	}
 }
 
@@ -147,6 +169,14 @@ input.scalable{
 	top: 0;
 	z-index: -1;
 	opacity: 0;
+}
+
+.to-left{
+	float: left;
+}
+
+.to-right{
+	float: right;
 }
 
 @media (max-width: 1024px) {

@@ -92,8 +92,8 @@ class App extends React.Component {
 		});
 	}
 
-	addProduct() {
-		let updatedProducts = this.state.products.concat({
+	addProduct(product) {
+		let updatedProducts = this.state.products.concat(product || {
 			name: 'produs',
 			price: '0.00'
 		});
@@ -139,36 +139,52 @@ class App extends React.Component {
 		}).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 		return total.toFixed(2);
 	}
-
+	
 	render() {
 		return (
-		<Router>
+			<Router>
 			<div className="app">
+			<Alert ref={(ref) => {this.alerter = ref}} />
 				<Header authenticated={this.state.authenticated} />
 				<section className="content-section">
 					<Route exact path="/login" render={()=>(
 						<div className="container">
-							<Login authenticated={this.state.authenticated} onLogIn={this.logIn} alerter={this.alerter} />
+							<Login 
+								authenticated={this.state.authenticated} 
+								onLogIn={this.logIn} 
+								alerter={this.alerter} />
 						</div>
 					)} />
 					<Route exact path="/register" render={()=>(
 						<div className="container">
-							<Register authenticated={this.state.authenticated} onRegister={this.logIn} alerter={this.alerter} />
+							<Register 
+								authenticated={this.state.authenticated} 
+								onRegister={this.logIn} 
+								alerter={this.alerter} />
 						</div>
 					)} />
 					<Route exact path="/" render={()=> (
 						<div className="container">
 							<div className="products-container">
-								<ProductList products={this.state.products} onChange={this.updateProduct} onAdd={this.addProduct} onRemove={this.removeProduct} alerter={this.alerter} />
+								<ProductList 
+									products={this.state.products} 
+									onChange={this.updateProduct}
+									onAdd={this.addProduct} 
+									onRemove={this.removeProduct} 
+									alerter={this.alerter} />
 							</div>
 							<div className="buyers-container">
-								<BuyerList buyers={this.state.buyers} onChange={this.updateBuyer} onOwnerChange={this.setOwner} onAdd={this.addBuyer}
-								onRemove={this.removeBuyer} computeTotal={this.computeBuyerTotal} />
+								<BuyerList 
+									buyers={this.state.buyers} 
+									onChange={this.updateBuyer} 
+									onOwnerChange={this.setOwner} 
+									onAdd={this.addBuyer}
+									onRemove={this.removeBuyer} 
+									computeTotal={this.computeBuyerTotal} />
 							</div>
 						</div>
 					)} />
 				</section>
-				<Alert ref={(ref) => {this.alerter = ref}} />
 			</div>
 		</Router>
       	);
