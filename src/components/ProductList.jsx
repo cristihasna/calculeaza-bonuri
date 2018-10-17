@@ -11,6 +11,7 @@ export class ProductList extends React.Component{
 	constructor(props){
 		super(props);
 		this.getTotalPrice = this.getTotalPrice.bind(this);
+		this.handleAddProduct = this.handleAddProduct.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.recognizeTextFromImage = this.recognizeTextFromImage.bind(this);
 	}
@@ -29,6 +30,10 @@ export class ProductList extends React.Component{
 			}
 		})
 
+	}
+
+	handleAddProduct(){
+		this.props.onAdd();
 	}
 
 	postprocessImage(imageBuffer){
@@ -130,7 +135,7 @@ export class ProductList extends React.Component{
 					<span className="value">{this.getTotalPrice()}</span>
 					<span className="currency">lei</span>
 				</div>
-				<button className="small-button" onClick={this.props.onAdd}>
+				<button className="small-button" onClick={this.handleAddProduct}>
 					<span className="button-icon">
 						<FontAwesome name="plus-square-o" />
 					</span>
